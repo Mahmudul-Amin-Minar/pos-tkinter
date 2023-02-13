@@ -1,0 +1,145 @@
+<!-- #######  HEY, I AM THE SOURCE EDITOR! #########-->
+<html>
+<head>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+<body>
+    <div class="header">
+        <p style="text-align: center;"><strong>OnnoRokom Electronics Co. Ltd.</strong></p>
+        <p style="text-align: center;">2/1/E, Arambagh, Eden Center, Dhaka-1000</p>
+        <p style="text-align: center;"><strong>Cash Memo</strong></p>
+    </div>
+    <div class="customer">
+        <table style="width: 100%; border-collapse: collapse;" border="0">
+        <tbody>
+            <tr>
+                <td style="width: 33.3333%;">Name: {{ order_details.customer_name }}</td>
+                <td style="width: 33.3333%; text-align: center;">Contact Number: {{ order_details.customer_phone }}</td>
+                <td style="width: 33.3333%; text-align: right;">Date: {{ order_details.today }} {{ order_details.current_time }}</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+
+        <p>&nbsp;</p>
+    <div class="product">
+        <table style="height: 144px; width: 100%; border-collapse: collapse;" border="0">
+        <tbody>
+            <tr style="height: 18px;">
+                <td style="width: 10.8297%; height: 18px; text-align: center;"><strong>SL No.</strong></td>
+                <td style="width: 45.2215%; height: 18px; text-align: center;"><strong>Product Name</strong></td>
+                <td style="width: 11.0512%; height: 18px; text-align: center;"><strong>Quantity</strong></td>
+                <td style="width: 18.5795%; height: 18px; text-align: right;"><strong>Unit Price</strong></td>
+                <td style="width: 14.3182%; height: 18px; text-align: right;"><strong>Price(BDT)</strong></td>
+            </tr>
+            {% for item in products %}
+                <tr style="height: 18px;">
+                    <td style="width: 10.8297%; height: 18px; text-align: center;">{{ item.sl_no }}</td>
+                    <td style="width: 45.2215%; height: 18px; text-align: center;">{{ item.product_name }}</td>
+                    <td style="width: 11.0512%; height: 18px; text-align: center;">{{ item.quantity }}</td>
+                    <td style="width: 18.5795%; height: 18px; text-align: right;">{{ item.unit_price }}</td>
+                    <td style="width: 14.3182%; height: 18px; text-align: right;">{{ item.price }}</td>
+                </tr>
+            {% endfor %}
+            
+        
+            <tr style="height: 18px;">
+            <td style="width: 10.8297%; height: 18px;">&nbsp;</td>
+            <td style="width: 45.2215%; height: 18px;">&nbsp;</td>
+            <td style="width: 11.0512%; height: 18px;">&nbsp;</td>
+            <td style="width: 18.5795%; height: 18px; text-align: right;"><strong>Subtotal</strong></td>
+            <td style="width: 14.3182%; height: 18px; text-align: right;"><strong>TK {{ order_details.subtotal }}</strong></td>
+            </tr>
+            <tr style="height: 18px;">
+            <td style="width: 10.8297%; height: 18px;">&nbsp;</td>
+            <td style="width: 45.2215%; height: 18px;">&nbsp;</td>
+            <td style="width: 11.0512%; height: 18px;">&nbsp;</td>
+            <td style="width: 18.5795%; height: 18px; text-align: right;"><strong>Discount</strong></td>
+            <td style="width: 14.3182%; height: 18px; text-align: right;"><strong>TK {{ order_details.discount }}</strong></td>
+            </tr>
+            <tr style="height: 18px;">
+            <td style="width: 10.8297%; height: 18px;">&nbsp;</td>
+            <td style="width: 45.2215%; height: 18px;">&nbsp;</td>
+            <td style="width: 11.0512%; height: 18px;">&nbsp;</td>
+            <td style="width: 18.5795%; height: 18px; text-align: right;"><strong>Payable Amount</strong></td>
+            <td style="width: 14.3182%; height: 18px; text-align: right;"><strong>TK {{ order_details.payable_amount }}</strong></td>
+            </tr>
+            <tr style="height: 18px;">
+            <td style="width: 10.8297%; height: 18px;">&nbsp;</td>
+            <td style="width: 45.2215%; height: 18px;">&nbsp;</td>
+            <td style="width: 11.0512%; height: 18px;">&nbsp;</td>
+            <td style="width: 18.5795%; height: 18px; text-align: right;"><strong>Cash Received</strong></td>
+            <td style="width: 14.3182%; height: 18px; text-align: right;"><strong>TK {{ order_details.cash_received }}</strong></td>
+            </tr>
+            <tr style="height: 18px;">
+                <td style="width: 10.8297%; height: 18px;">&nbsp;</td>
+                <td style="width: 45.2215%; height: 18px;">&nbsp;</td>
+                <td style="width: 11.0512%; height: 18px;">&nbsp;</td>
+                <td style="width: 18.5795%; height: 18px; text-align: right;"><strong>Cash Return</strong></td>
+                <td style="width: 14.3182%; height: 18px; text-align: right;"><strong>TK {{ order_details.cash_return }}</strong></td>
+            </tr>
+            <tr style="height: 18px;">
+                <td style="width: 10.8297%; height: 18px;">
+                    {% if order_details.gift == 'watch' %}
+                        <input type="checkbox" checked>
+                    {% else %}
+                        <input type="checkbox">
+                    {% endif %}
+                    <label for="vehicle1">Watch</label><br>
+                </td>
+                <td style="width: 45.2215%; height: 18px;">
+                    {% if order_details.gift == 'gift' %}
+                        <input type="checkbox" checked>
+                    {% else %}
+                        <input type="checkbox">
+                    {% endif %}
+                    <label for="vehicle1">Gift</label><br>
+                </td>
+                <td style="width: 11.0512%; height: 18px;">&nbsp;</td>
+                <td style="width: 18.5795%; height: 18px;">&nbsp;</td>
+                <td style="width: 14.3182%; height: 18px;">&nbsp;</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+    <p>&nbsp;</p>
+    <div class="other_products">
+        <table style="border-collapse: collapse; width: 80%; height: 99px; font-size: 10px;" border="0">
+            <p>Our Other Products:</p>
+            <tbody>
+                
+                <tr>
+                <td style="width: 50%;">{{ other_products[0] }}</td>
+                <td style="width: 50%;">{{ other_products[1] }}</td>
+                </tr>
+                <tr>
+                <td style="width: 50%;">{{ other_products[2] }}</td>
+                <td style="width: 50%;">{{ other_products[3] }}</td>
+                </tr>
+                <tr>
+                <td style="width: 50%;">{{ other_products[4] }}</td>
+                <td style="width: 50%;">{{ other_products[5] }}</td>
+                </tr>
+                <tr>
+                <td style="width: 50%;">{{ other_products[6] }}</td>
+                <td style="width: 50%;">{{ other_products[7] }}</td>
+                </tr>
+                <tr>
+                <td style="width: 50%;">{{ other_products[8] }}</td>
+                <td style="width: 50%;">{{ other_products[9] }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="address">
+        <p><strong>Phone:</strong> +8801847103102</p>
+        <p><strong>Website:</strong> https://bigganbaksho.com/</p>
+        <p><strong>Facebook:</strong> https://www.facebook.com/BigganBaksho</p>
+    </div>
+    <br>
+    <div class="footer">
+        <p>This is computer generated invoice, No signature is required.</p>
+        <p>&copy;2023 All Rights Reserved</p>
+    </div>
+</body>
+</html>

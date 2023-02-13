@@ -1,0 +1,21 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+    margin: auto;
+    width: 98%;
+    font-size: 14px;
+    padding: 10px;
+}
+
+.header{
+    line-height: 2px;
+}
+.customer td{
+    font-size: 14px;
+}
+.product td{
+    font-size: 14px;
+}
+
+.footer{
+    line-height: 2px;
+}
